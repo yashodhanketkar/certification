@@ -1,6 +1,6 @@
 from rest_framework import viewsets, generics
-from .models import Student, Teacher
-from .serializers import StudentSerializer, TeacherSerializer
+from .models import Student, Teacher, Certificate
+from .serializers import StudentSerializer, TeacherSerializer, CertificateSerializer
 
 # Create your views here.
 
@@ -29,3 +29,14 @@ class TeacherStudentView(generics.ListAPIView):
     def get_queryset(self):
         teacher_id = self.kwargs["pk"]
         return Teacher.objects.get(id=teacher_id).students.all()
+
+
+class GenerateCertificateView(generics.CreateAPIView):
+    serializer_class = CertificateSerializer
+
+
+class CertificateView(generics.ListAPIView):
+    serializer_class = CertificateSerializer
+
+    def get_queryset(self):
+        return Certificate.objects.all()

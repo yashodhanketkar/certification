@@ -18,3 +18,10 @@ class Teacher(models.Model):
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
+
+
+class Certificate(models.Model):
+    title = models.CharField(max_length=100)
+    date = models.DateField()
+    student = models.ForeignKey("Student", on_delete=models.CASCADE)
+    teacher = models.ForeignKey("Teacher", on_delete=models.CASCADE)
