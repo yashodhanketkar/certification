@@ -24,6 +24,7 @@ from records.views import (
     TeacherStudentView,
     GenerateCertificateView,
     CertificateView,
+    verify_certificate,
 )
 
 urlpatterns = [
@@ -57,4 +58,5 @@ urlpatterns += [
         CertificateView.as_view(),
         name="certificates",
     ),
+    path("api/verify_certificate/", verify_certificate, name="verify-certificate"),
 ]

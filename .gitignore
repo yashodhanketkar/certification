@@ -5,3 +5,5 @@ __pycache__/
 migrations/
 
 *.sqlite3
+
+instance.py
